@@ -16,7 +16,13 @@ import ConfirmationModal from '../components/ConfirmationModal';
 
 const DailyTasks = () => {
     const { tasks, addTask, toggleTask, deleteTask, updateTask } = useTasks();
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+    const [selectedDate, setSelectedDate] = useState(() => {
+        const d = new Date();
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    });
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -28,22 +34,34 @@ const DailyTasks = () => {
     const [editingTaskId, setEditingTaskId] = useState(null);
     const [editingTitle, setEditingTitle] = useState('');
 
+    // Helper to get local date string YYYY-MM-DD
+    const getLocalDateString = () => {
+        const d = new Date();
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
     // Automatic date update on midnight
-    const lastKnownTodayRef = useRef(new Date().toISOString().split('T')[0]);
+    const lastKnownTodayRef = useRef(getLocalDateString());
+    // Used to force re-render when day changes, even if selectedDate doesn't change
+    const [todayTrigger, setTodayTrigger] = useState(getLocalDateString());
 
     useEffect(() => {
         const checkDate = () => {
-            const currentToday = new Date().toISOString().split('T')[0];
+            const currentToday = getLocalDateString();
             const lastKnownToday = lastKnownTodayRef.current;
 
             if (currentToday !== lastKnownToday) {
                 // The day has changed!
-                // If the user is currently viewing the "old" today, switch them to the "new" today.
+                lastKnownTodayRef.current = currentToday;
+                setTodayTrigger(currentToday); // Force re-render
+
+                // If the user was viewing the "old" today, switch them to the "new" today.
                 if (selectedDate === lastKnownToday) {
                     setSelectedDate(currentToday);
                 }
-                // Update our reference
-                lastKnownTodayRef.current = currentToday;
             }
         };
 
@@ -188,6 +206,7 @@ const DailyTasks = () => {
                             التاريخ:
                         </label>
                         <CustomDatePicker
+                            key={todayTrigger} // Force re-render when day changes
                             selectedDate={selectedDate}
                             onChange={setSelectedDate}
                         />
