@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://KHM553.github.io/Todo-list--dad1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
