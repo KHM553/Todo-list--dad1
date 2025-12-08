@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { TaskProvider } from './context/TaskContext';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
@@ -10,7 +10,7 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 function App() {
   return (
     <TaskProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           {/* Public Route - Landing Page */}
           <Route path="/" element={
@@ -38,7 +38,7 @@ function App() {
           {/* Fallback */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TaskProvider>
   );
 }
