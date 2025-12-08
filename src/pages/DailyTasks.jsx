@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTasks } from '../context/TaskContext';
 import {
     Plus,
@@ -27,6 +27,38 @@ const DailyTasks = () => {
     // Editing State
     const [editingTaskId, setEditingTaskId] = useState(null);
     const [editingTitle, setEditingTitle] = useState('');
+
+    // Automatic date update on midnight
+    const lastKnownTodayRef = useRef(new Date().toISOString().split('T')[0]);
+
+    useEffect(() => {
+        const checkDate = () => {
+            const currentToday = new Date().toISOString().split('T')[0];
+            const lastKnownToday = lastKnownTodayRef.current;
+
+            if (currentToday !== lastKnownToday) {
+                // The day has changed!
+                // If the user is currently viewing the "old" today, switch them to the "new" today.
+                if (selectedDate === lastKnownToday) {
+                    setSelectedDate(currentToday);
+                }
+                // Update our reference
+                lastKnownTodayRef.current = currentToday;
+            }
+        };
+
+        // Check every minute
+        const intervalId = setInterval(checkDate, 60000);
+
+        // Also check on focus (when user comes back to the tab)
+        window.addEventListener('focus', checkDate);
+
+        return () => {
+            clearInterval(intervalId);
+            window.removeEventListener('focus', checkDate);
+        };
+    }, [selectedDate]);
+
 
     const handleAdd = (e) => {
         e.preventDefault();
