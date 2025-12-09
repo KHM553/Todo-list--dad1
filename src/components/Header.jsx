@@ -18,7 +18,7 @@ const Header = () => {
                 }}>
                     <CheckSquare size={24} />
                 </div>
-                <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>إنجاز</h2>
+                <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '700' }}>محكم</h2>
             </div>
 
             <nav className="nav-links" style={{ margin: '0 auto' }}>

@@ -115,7 +115,7 @@ const LandingPage = () => {
                     }}>
                         <CheckCircle2 size={24} />
                     </div>
-                    <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '900', color: '#1A1A1A' }}>إنجاز</h2>
+                    <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '900', color: '#1A1A1A' }}>محكم</h2>
                 </div>
 
                 <SignInButton mode="modal">
@@ -195,7 +195,7 @@ const LandingPage = () => {
                         marginBottom: '3rem',
                         maxWidth: '540px'
                     }}>
-                        إنجاز يساعدك على ترتيب أولوياتك ومتابعة مهامك اليومية بأسلوب بصري ممتع وبسيط، لتنجز أكثر بجهد أقل.
+                        محكم يساعدك على ترتيب أولوياتك ومتابعة مهامك اليومية بأسلوب بصري ممتع وبسيط، لتنجز أكثر بجهد أقل.
                     </p>
 
                     <div style={{ display: 'flex', gap: '1rem' }}>
@@ -360,7 +360,7 @@ const LandingPage = () => {
             }}>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
                     <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#1A1A1A', marginBottom: '1rem' }}>كل ما تحتاجه للنجاح</h2>
-                    <p style={{ color: '#666', fontSize: '1.2rem' }}>صممنا إنجاز ليكون بسيطاً لكن قوياً بما يكفي لكل احتياجاتك</p>
+                    <p style={{ color: '#666', fontSize: '1.2rem' }}>صممنا محكم ليكون بسيطاً لكن قوياً بما يكفي لكل احتياجاتك</p>
                 </div>
 
                 <div style={{
@@ -409,9 +409,9 @@ const LandingPage = () => {
                     }}>
                         <CheckCircle2 size={20} />
                     </div>
-                    <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>إنجاز</h3>
+                    <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '800' }}>محكم</h3>
                 </div>
-                <p style={{ color: '#888', marginBottom: '2rem' }}>&copy; 2025 جميع الحقوق محفوظة لمنصة إنجاز.</p>
+                <p style={{ color: '#888', marginBottom: '2rem' }}>&copy; 2025 جميع الحقوق محفوظة لمنصة محكم.</p>
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', color: '#666' }}>
                     <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>سياسة الخصوصية</a>
                     <a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>شروط الاستخدام</a>
